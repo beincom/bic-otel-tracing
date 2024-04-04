@@ -1,6 +1,6 @@
 {
   "name": "@beincom/otel-tracing",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "main": "dist/index.js",
   "author": "Quoc Viet <hoangquocviet@evol.vn>",
@@ -11,6 +11,10 @@
     "opentelemetry",
     "nestjs-cls"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beincom/bic-otel-tracing.git"
+  },
   "scripts": {
     "build": "rm -fr ./dist && tsc -p tsconfig.build.json"
   },
