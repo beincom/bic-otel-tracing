@@ -34,14 +34,8 @@ function CreateParentSpan(spanName: string): MethodDecorator {
         store.span = span;
         updateStore(TRACER, store, cls);
 
-        logger.log(
-          'create parent span - store: ',
-          store?.span?.spanContext().spanId.toString(),
-        );
-        logger.log(
-          'Create parent span: ',
-          span?.spanContext()?.spanId.toString(),
-        );
+        logger.log('Store: ', store?.span?.spanContext().spanId.toString());
+        logger.log('Span: ', span?.spanContext()?.spanId.toString());
 
         args.push(span);
         return await originalMethod.apply(this, args);
@@ -84,10 +78,16 @@ function CreateChildSpan(spanConfig: SpanConfig): MethodDecorator {
         store = cls?.get(TRACER);
         if (store) {
           context = traceService.getContextFromSpan(store?.span);
+        } else {
+          store = {};
         }
       }
 
-      store = store || {};
+      logger.log(
+        'Active span: ',
+        store?.span?.spanContext()?.spanId.toString(),
+      );
+
       return traceService?.createChildSpan(
         hasAttributes
           ? {
@@ -106,14 +106,12 @@ function CreateChildSpan(spanConfig: SpanConfig): MethodDecorator {
             args.push(span);
 
             logger.log(
-              'Create child span - store: ',
+              'Store: ',
               cls?.get(TRACER)?.span?.spanContext()?.spanId.toString(),
             );
 
-            logger.log(
-              'Create child span: ',
-              span?.spanContext()?.spanId.toString(),
-            );
+            logger.log('Span: ', span?.spanContext()?.spanId.toString());
+
             return await originalMethod.apply(this, args);
           } catch (err) {
             logger.error(err);

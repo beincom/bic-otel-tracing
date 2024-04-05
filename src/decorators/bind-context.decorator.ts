@@ -23,17 +23,9 @@ export function BindContext(): MethodDecorator {
       const context = traceService?.extractFromPropagation(args[0]);
       const span = traceService?.getSpanFromContext(context);
 
-      logger.log(
-        'Bind context - span: ',
-        span?.spanContext()?.spanId.toString(),
-      );
-
+      logger.log('Active span: ', span?.spanContext()?.spanId.toString());
       const store = createStore(TRACER, { span }, cls);
-
-      logger.log(
-        'Bind context - store: ',
-        store?.span?.spanContext()?.spanId.toString(),
-      );
+      logger.log('Store: ', store?.span?.spanContext()?.spanId.toString());
 
       args.push(span);
       return originalMethod.apply(this, args);
