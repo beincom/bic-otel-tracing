@@ -28,7 +28,7 @@
     "@opentelemetry/otlp-exporter-base": "^0.50.0",
     "@opentelemetry/resource-detector-container": "^0.3.8",
     "@opentelemetry/resources": "^1.23.0",
-    "@opentelemetry/sdk-node": "^0.50.0",
+    "@opentelemetry/sdk-node": "^0.54.2",
     "kafkajs": "^2.2.4",
     "nestjs-cls": "^4.3.0",
     "opentelemetry-instrumentation-kafkajs": "^0.40.0",
