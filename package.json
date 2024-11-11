@@ -19,7 +19,6 @@
     "build": "rm -fr ./dist && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@beincom/otel-tracing": "^0.0.9",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "10.4.2",
     "@nestjs/platform-express": "10.4.5",
