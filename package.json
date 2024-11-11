@@ -19,6 +19,7 @@
     "build": "rm -fr ./dist && tsc -p tsconfig.build.json"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.12.2",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "10.4.2",
     "@nestjs/platform-express": "10.4.5",
